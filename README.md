@@ -24,3 +24,6 @@ Main View:
 
 Installierte Java-Versionen:
 ![Ansicht der installierten Java-Versionen](https://raw.githubusercontent.com/magicmarcy/MavenBuildManager/refs/heads/main/img/java_versions.png)
+
+## Probleme, Ideen, Anregungen
+Solltest du Probleme mit der Anwendung haben oder weitere Ideen oder Anregungen, nutze bitte den [GitHub Workflow unter Issues](https://github.com/magicmarcy/MavenBuildManager/issues) dazu und erstelle einfach eine neue Issue. Hier ist genau der richtige Platz dafür.
