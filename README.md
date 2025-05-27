@@ -6,8 +6,8 @@ In dieser Konfigurationsdatei werden die benötigten Pfade und Optionen hinterle
 
 | Option | Beschreibung |
 |--------|--------------|
-|```projects_directory```| Hier muss das Verzeichnis angegeben werden, in welchem die zu bauenden Projekte liegen. Bitte beachte, dass nur Projekte aufgenommen werden, die KEINEN parent-Eintrag in ihrer pomxml haben
-|```maven_executable```| Vollständiger Pfad zu Maven Executable (mvn.cmd)  
+|```projects_directory```| Hier muss das Verzeichnis angegeben werden, in welchem die zu bauenden Projekte liegen. Bitte beachte, dass nur Projekte aufgenommen werden, die KEINEN parent-Eintrag in ihrer pom.xml haben
+|```maven_executable```| Vollständiger Pfad zur Maven Executable (mvn.cmd)  
 |```checkbox_options```| Hier werden die Optionen aufgelistet, die auf der Oberfläche als Checkboxen sichtbar sind
 |```goal_options```| Inhalte des DropDowns für die Maven-Goals
 |```last_selected_goal```| Hier wird gespeichert, welches Goal zuletzt ausgewählt wurde
