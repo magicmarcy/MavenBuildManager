@@ -171,12 +171,23 @@ class ProjectLoaderWorker(QtCore.QThread):
                         ns = ""
                         if "}" in pom_root.tag:
                             ns = pom_root.tag.split("}")[0] + "}"
+                        
                         # Do not use projects with parent tag
                         if pom_root.find(f"{ns}parent") is not None:
-                            continue
+                            # If a parent-Tag is found, continue and search for the next pom.xml
+                            continue 
+                        
                         project = MavenProject(root_dir)
                         self.project_found.emit(project)
-                    except Exception:
+                        
+                        # When a project is found, we clear the directory listing to prevent os.walk from running to the subfolders
+                        dirs[:] = []
+                        
+                    except ET.ParseError:
+                        print(f"Error parsing {pom_path}: Not a valid XML file.")
+                        pass
+                    except Exception as e:
+                        print(f"An unexpected error occurred with {pom_path}: {e}")
                         pass
 
 class MavenBuildGUI(QtWidgets.QWidget):
@@ -401,6 +412,12 @@ class MavenBuildGUI(QtWidgets.QWidget):
         
         self._loadProjectsAsync()
         self._refreshJavaList()
+
+        QtCore.QTimer.singleShot(0, self.set_interactive_mode)
+
+    def set_interactive_mode(self):
+        header = self.projectTable.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Interactive)
 
     def _loadProjectsAsync(self):
         self.projectTable.setRowCount(0)
