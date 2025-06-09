@@ -216,7 +216,7 @@ class MavenBuildGUI(QtWidgets.QWidget):
         self._loadLastState()
 
     def _initUI(self):
-        self.setWindowTitle("Maven Build Manager | v.0.16 © 2025 by magicmarcy")
+        self.setWindowTitle("Maven Build Manager | v.0.17a © 2025 by magicmarcy")
         self.resize(900, 900)
         
         tab_widget = QtWidgets.QTabWidget()
@@ -336,6 +336,11 @@ class MavenBuildGUI(QtWidgets.QWidget):
         <p>Der Maven Build Manager ist ein reines Freizeitprojekt von mir.</p>
         <p>Solltest du Fragen, Hinweise oder Anregungen haben oder weitere Information zum Projekt benötigen, bitte kontaktiere mich einfach über die GitHub-Projektseite.</p>
         <h2>ChangeLog</h2>
+        <p>
+          <b>0.17a</b><br/>
+          - Es wird nun nach dem ersten Fund nicht weiter im Verzeichnis gesucht<br/>
+          - Neue Eingeschft exclude_dirs um Verzeichnisse auszuschliessen
+        </p>
         <p>
           <b>0.16a</b><br/>
           - Texte und Infos überarbeitet<br/>
