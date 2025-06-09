@@ -159,10 +159,23 @@ class ProjectLoaderWorker(QtCore.QThread):
     def __init__(self, base_dir, parent=None):
         super().__init__(parent)
         self.base_dir = base_dir
+
+    def _load_exclude_dirs(self):#
+        config = configparser.ConfigParser()
+        config_file = "config.ini"          
+    
+        try:
+            config.read(config_file)
+            if 'maven' in config and 'exclude_dirs' in config['maven']:
+                return [d.strip() for d in config['maven']['exclude_dirs'].split(',')]
+        except Exception as e:
+            print(f"Error reading config file {self.config_file}: {e}")
+        return [] # Leere Liste, falls keine Konfiguration gefunden oder Fehler aufgetreten ist
         
     def run(self):
         if os.path.isdir(self.base_dir):
             for root_dir, dirs, files in os.walk(self.base_dir):
+                dirs[:] = [d for d in dirs if d not in self._load_exclude_dirs()]
                 if "pom.xml" in files:
                     pom_path = os.path.join(root_dir, "pom.xml")
                     try:
